@@ -1,64 +1,380 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RawFM - Music Like Never Before</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pursuite Institute | CBSE Classes 9–12 | Chennai</title>
+  <meta name="description" content="Pursuite Institute in Chennai: Science & Maths coaching for CBSE Classes 9–12 by PhD‑qualified faculty. Access past question papers, notes, and transparent pricing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f0d;           /* near‑black */
+      --bg-elev:#121714;      /* elevated dark */
+      --text:#e8f5e9;         /* soft green‑white */
+      --muted:#b6c9b7;        /* muted text */
+      --primary:#22c55e;      /* emerald */
+      --primary-700:#15803d;  /* darker emerald */
+      --accent:#86efac;       /* light green */
+      --danger:#ef4444;       /* red */
+      --card:#0f1512;
+      --ring: 0 0 0 4px rgba(34,197,94,.25);
+      --shadow: 0 10px 30px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;}
+    body{
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background:linear-gradient(180deg, #0b0f0d 0%, #0a100c 100%);
+      color:var(--text);
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.1rem;border-radius:14px;border:1px solid #2a2f2c;background:linear-gradient(180deg,#1a231d,#121713);color:#eaffea;font-weight:600;box-shadow:var(--shadow);transition:.2s transform ease, .2s box-shadow ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 16px 40px rgba(34,197,94,.15)}
+    .btn.primary{background:linear-gradient(180deg,#22c55e,#15803d);border-color:transparent;color:#04130a}
+    .btn.ghost{background:transparent;border-color:#2a2f2c;color:var(--accent)}
+    .badge{display:inline-block;padding:.35rem .7rem;border-radius:999px;background:#0d1b14;border:1px solid #204b31;color:#a7f3d0;font-size:.8rem;font-weight:600}
+    header{
+      position:sticky;top:0;z-index:50;background:rgba(11,15,13,.7);backdrop-filter:blur(10px);border-bottom:1px solid #18201b
+    }
+    nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.3px}
+    .brand .logo{width:36px;height:36px;background:radial-gradient(100% 100% at 0% 0%, #22c55e, #0ea5e9 60%, #0b0f0d 100%);border-radius:10px;box-shadow:0 0 0 4px rgba(34,197,94,.15)}
+    .navlinks{display:flex;gap:18px;align-items:center}
+    .navlinks a{padding:.55rem .75rem;border-radius:12px;color:var(--muted)}
+    .navlinks a:hover{background:#0e1612;color:var(--text)}
+    .hero{padding:70px 0 40px;}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+    .hero h1{font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin:.2rem 0 .8rem}
+    .hero p{color:var(--muted);font-size:1.05rem}
+    .card{background:var(--card);border:1px solid #18201b;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card.pad{padding:22px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px}
+    .stat{background:#0e1612;border:1px solid #1e2a23;padding:14px;border-radius:16px;text-align:center}
+    .stat .big{font-size:1.6rem;font-weight:800;color:var(--accent)}
+    .section{padding:50px 0}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .feature{display:flex;gap:12px}
+    .feature .ico{width:36px;height:36px;border-radius:10px;background:linear-gradient(180deg,#102317,#0c1812);border:1px solid #1e3426;display:grid;place-items:center}
+    .feature h3{margin:.1rem 0 .2rem}
+    .kicker{color:#a7f3d0;text-transform:uppercase;font-size:.8rem;letter-spacing:.15em;font-weight:700}
+    .pill-tabs{display:flex;gap:10px;flex-wrap:wrap}
+    .pill-tabs button{background:#0d1511;color:var(--muted);border:1px solid #243127;padding:.55rem .8rem;border-radius:999px;font-weight:600}
+    .pill-tabs button.active{background:linear-gradient(180deg,#1b2e22,#122119);color:#c1ffd6;border-color:#2f6f4b;box-shadow:inset 0 0 0 2px rgba(34,197,94,.15)}
+    .course-card h4{margin:.3rem 0 .2rem}
+    .price{font-size:2rem;font-weight:800;color:#c1ffd6}
+    .price small{font-size:.9rem;color:var(--muted);font-weight:600}
+    .table{width:100%;border-collapse:collapse}
+    .table th,.table td{border-bottom:1px solid #1a241d;padding:12px 10px;text-align:left}
+    .table th{color:#a7f3d0;font-weight:700}
+    .list{margin:0;padding-left:1.1rem}
+    .list li{margin:.4rem 0}
+    .faq details{background:#0d1511;border:1px solid #233126;padding:14px;border-radius:14px}
+    .faq summary{cursor:pointer;font-weight:700}
+    .cta{background:radial-gradient(1200px 600px at 10% -10%, rgba(34,197,94,.12), transparent 60%),radial-gradient(600px 600px at 100% 0%, rgba(20,184,166,.12), transparent 60%);}
+    .footer{border-top:1px solid #1b241e;color:#98b7a0}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr 1fr}
+      .grid-4{grid-template-columns:1fr 1fr}
+      .stats{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width: 640px){
+      .grid-3,.grid-4,.grid-2{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
   <header>
-    <nav>
-      <div class="logo">RawFM</div>
-      <ul>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <section class="hero">
-      <h1>RawFM</h1>
-      <p>Revolutionizing the Way You Listen!</p>
-      <a href="#contact" class="btn">Get Yours Now</a>
-    </section>
-  </header>
-
-  <section id="features" class="section">
-    <h2>Features</h2>
-    <div class="features-grid">
-      <div class="card"> SIM-enabled Streaming</div>
-      <div class="card"> FM Radio Access</div>
-      <div class="card"> Bluetooth Earbuds</div>
-      <div class="card"> Compact Digital Display</div>
-      <div class="card"> Long Battery Life</div>
-      <div class="card"> Free Pouch with Offer</div>
+    <div class="container">
+      <nav>
+        <div class="brand" aria-label="Pursuite Institute logo">
+          <div class="logo" aria-hidden="true"></div>
+          <span>Pursuite Institute</span>
+        </div>
+        <div class="navlinks" role="navigation" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#courses">Courses</a>
+          <a href="#resources">Question Papers & Notes</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact</a>
+          <a class="btn primary" href="#enrol">Enrol Now</a>
+        </div>
+      </nav>
     </div>
-  </section>
-
-  <section id="about" class="section">
-    <a href="RawFM.pptx" download class="btn download-btn">Download PPT</a>
-
-    <h2>About RawFM</h2>
-    <p>RawFM is a sleek, portable music player designed for students. With built-in SIM support, FM radio, Bluetooth earbuds, and a digital display, you can enjoy music anytime, anywhere — even without a phone or WiFi.</p>
-    <h3>By:</h3> <br>
-    <h4>Kanishk K.R<br>Lalith Kishore<br>Saksam<br>Aniket Dash<br>Harsh V</h4>
+  </header>  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="badge">Chennai • CBSE Classes 9–12</span>
+          <h1>Science & Maths coaching by <span style="color:var(--accent)">PhD‑qualified</span> faculty.</h1>
+          <p>Structured lessons, exam‑oriented practice, and personalised mentoring. Access past <strong>question papers</strong>, curated <strong>notes</strong> for every standard, and weekly progress reviews.</p>
+          <div style="display:flex;gap:12px;margin-top:14px">
+            <a class="btn primary" href="#pricing">View Pricing</a>
+            <a class="btn ghost" href="#resources">Browse Resources</a>
+          </div>
+          <div class="stats">
+            <div class="stat"><div class="big" id="stat-batches">16+</div><div>Active Batches</div></div>
+            <div class="stat"><div class="big">1:12</div><div>Teacher:Student</div></div>
+            <div class="stat"><div class="big">95%</div><div>Board Success</div></div>
+            <div class="stat"><div class="big">1000+</div><div>Practice Qs</div></div>
+          </div>
+        </div>
+        <div class="card pad">
+          <h3 style="margin:0 0 .6rem">Free Diagnostic & Demo</h3>
+          <p style="color:var(--muted);margin:0 0 .8rem">Tell us your class and goals. We’ll suggest a plan and schedule a demo session.</p>
+          <form id="leadForm" class="grid-2" autocomplete="on">
+            <label>Full Name<br><input name="name" required placeholder="Your name" style="width:100%;padding:12px;border-radius:12px;border:1px solid #243127;background:#0d1511;color:var(--text)"></label>
+            <label>Phone<br><input name="phone" required placeholder="98765 43210" pattern="[0-9\s+-]{10,}" style="width:100%;padding:12px;border-radius:12px;border:1px solid #243127;background:#0d1511;color:var(--text)"></label>
+            <label>Class (9–12)<br><select name="standard" required style="width:100%;padding:12px;border-radius:12px;border:1px solid #243127;background:#0d1511;color:var(--text)">
+              <option value="">Choose</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+            </select></label>
+            <label>Subjects<br>
+              <select name="subjects" multiple size="2" style="width:100%;padding:12px;border-radius:12px;border:1px solid #243127;background:#0d1511;color:var(--text)">
+                <option>Mathematics</option>
+                <option>Science (Phy/Chem/Bio)</option>
+                <option>Physics</option>
+                <option>Chemistry</option>
+                <option>Biology</option>
+              </select>
+            </label>
+            <div style="grid-column:1/-1;display:flex;gap:10px;align-items:center">
+              <button class="btn primary" type="submit">Request Demo</button>
+              <span id="formMsg" aria-live="polite" style="color:var(--accent)"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section><!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container grid-3">
+    <div class="card pad feature">
+      <div class="ico" aria-hidden="true">📘</div>
+      <div>
+        <h3>Curriculum‑Aligned</h3>
+        <p class="muted">Fully mapped to CBSE, with term‑wise planners, blueprints, and exemplar questions.</p>
+      </div>
+    </div>
+    <div class="card pad feature">
+      <div class="ico" aria-hidden="true">🧪</div>
+      <div>
+        <h3>Concept → Practice → Test</h3>
+        <p>Every topic flows from fundamentals to exam‑style problems, with weekly quizzes.</p>
+      </div>
+    </div>
+    <div class="card pad feature">
+      <div class="ico" aria-hidden="true">🎓</div>
+      <div>
+        <h3>PhD‑Qualified Faculty</h3>
+        <p>Experienced teachers with research backgrounds & proven board results.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-  <section id="contact" class="section contact">
-    <h2>Contact Us</h2>
-    <p>Have questions or want to order in bulk for your school? Reach out to us!</p>
-   
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+<!-- COURSES -->
+<section id="courses" class="section">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+      <div>
+        <div class="kicker">Courses</div>
+        <h2 style="margin:.2rem 0 0">Science & Maths (Classes 9–12)</h2>
+      </div>
+      <div class="pill-tabs" role="tablist" aria-label="Filter by class">
+        <button class="active" data-tab="all" role="tab" aria-selected="true">All</button>
+        <button data-tab="9" role="tab">Class 9</button>
+        <button data-tab="10" role="tab">Class 10</button>
+        <button data-tab="11" role="tab">Class 11</button>
+        <button data-tab="12" role="tab">Class 12</button>
+      </div>
+    </div>
 
-  <footer>
-    <p>&copy; 2025 RawFM. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+    <div class="grid-4" id="courseGrid" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources" class="section">
+  <div class="container">
+    <div class="kicker">Free Resources</div>
+    <h2>Question Papers & Notes — per Standard</h2>
+    <p style="color:var(--muted)">Access curated PDFs of last‑year papers, chapter‑wise notes, and formula sheets. (You can replace links with your actual Google Drive/website URLs.)</p>
+    <div class="grid-2" id="resourceGrid"></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="section">
+  <div class="container">
+    <div class="kicker">Pricing</div>
+    <h2>Transparent Plans</h2>
+    <div class="grid-3">
+      <div class="card pad">
+        <h3>Starter</h3>
+        <p class="price">₹2499 <small>/ month</small></p>
+        <ul class="list">
+          <li>Any 1 subject</li>
+          <li>Weekly quiz</li>
+          <li>Study planner</li>
+          <li>Notes & past papers</li>
+        </ul>
+        <a class="btn" href="#enrol">Enrol with Starter</a>
+      </div>
+      <div class="card pad" style="border-color:#2f6f4b;box-shadow:0 0 0 2px rgba(34,197,94,.15)">
+        <h3>Achiever</h3>
+        <p class="price">₹3999 <small>/ month</small></p>
+        <ul class="list">
+          <li>Any 2 subjects</li>
+          <li>Doubt clearing desk</li>
+          <li>Unit tests & analysis</li>
+          <li>Parent review meet</li>
+        </ul>
+        <a class="btn primary" href="#enrol">Enrol with Achiever</a>
+      </div>
+      <div class="card pad">
+        <h3>Board Pro</h3>
+        <p class="price">₹5999 <small>/ month</small></p>
+        <ul class="list">
+          <li>All science + maths</li>
+          <li>Full test series</li>
+          <li>Exam bootcamps</li>
+          <li>1‑to‑1 mentoring</li>
+        </ul>
+        <a class="btn" href="#enrol">Enrol with Board Pro</a>
+      </div>
+    </div>
+
+    <h3 style="margin-top:30px">Batch Schedule & Fees (per class)</h3>
+    <div class="card pad" style="overflow:auto">
+      <table class="table" id="feeTable" aria-describedby="feeHelp">
+        <thead>
+          <tr><th>Class</th><th>Subjects</th><th>Mode</th><th>Hours / week</th><th>Monthly Fee</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <small id="feeHelp" style="color:var(--muted)">* Contact us for scholarship/need‑based concessions. Fees inclusive of GST.</small>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq">
+  <div class="container grid-2">
+    <div>
+      <div class="kicker">FAQ</div>
+      <h2>Common Questions</h2>
+      <details open>
+        <summary>Where is Pursuite Institute located?</summary>
+        <p>We operate in Chennai with both classroom and live‑online batches. Exact address and map are in the Contact section.</p>
+      </details>
+      <details>
+        <summary>Do you provide doubt support?</summary>
+        <p>Yes. Daily doubt desk on WhatsApp/Telegram plus dedicated slots after class.</p>
+      </details>
+      <details>
+        <summary>Are demo classes free?</summary>
+        <p>Absolutely. Fill the form above to book a free diagnostic and demo.</p>
+      </details>
+    </div>
+    <div class="card pad">
+      <h3>What parents say</h3>
+      <p>“Clear explanation and consistent tests helped my son jump from 72% to 91% in Class 10.” — <em>Parent, Velachery</em></p>
+      <p>“The notes and weekly quizzes made revision easy.” — <em>Student, Class 12</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="enrol" class="section cta">
+  <div class="container grid-2">
+    <div>
+      <h2>Ready to level up your boards?</h2>
+      <p style="color:var(--muted)">Join a high‑focus batch or learn 1‑to‑1. Talk to our academic counsellor now.</p>
+      <a class="btn primary" href="#contact">Contact Us</a>
+    </div>
+    <div class="card pad">
+      <h3>Quick Enquiry</h3>
+      <form id="enquiryForm" class="grid-2">
+        <label>Email<br><input name="email" required type="email" placeholder="you@example.com" style="width:100%;padding:12px;border-radius:12px;border:1px solid #243127;background:#0d1511;color:var(--text)"></label>
+        <label>Preferred Mode<br>
+          <select name="mode" required style="width:100%;padding:12px;border-radius:12px;border:1px solid #243127;background:#0d1511;color:var(--text)">
+            <option>Classroom (Chennai)</option>
+            <option>Online (Live)</option>
+          </select>
+        </label>
+        <label style="grid-column:1/-1">Message<br>
+          <textarea name="message" rows="3" placeholder="Tell us your class & subjects…" style="width:100%;padding:12px;border-radius:12px;border:1px solid #243127;background:#0d1511;color:var(--text)"></textarea>
+        </label>
+        <div style="grid-column:1/-1;display:flex;gap:10px;align-items:center">
+          <button class="btn" type="submit">Send Enquiry</button>
+          <span id="enquiryMsg" aria-live="polite" style="color:var(--accent)"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container grid-2">
+    <div>
+      <div class="kicker">Contact</div>
+      <h2>Visit / Call</h2>
+      <p>
+        <strong>Pursuite Institute</strong><br>
+        Chennai, Tamil Nadu, India<br>
+        Phone: <a href="tel:+919000000000">+91 90000 00000</a><br>
+        Email: <a href="mailto:hello@pursuite.in">hello@pursuite.in</a>
+      </p>
+      <p>Hours: Mon–Sat, 9:00 AM – 8:00 PM</p>
+    </div>
+    <div class="card" style="overflow:hidden">
+      <iframe title="Map of Pursuite Institute Chennai" width="100%" height="280" style="border:0;display:block" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31095.661057879697!2d80.2209!3d13.0827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265f3b9b1b5a1%3A0x7d7f3c5b2a4e1!2sChennai!5e0!3m2!1sen!2sin!4v1710000000000"></iframe>
+    </div>
+  </div>
+</section>
+
+  </main>  <footer class="footer">
+    <div class="container" style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:20px 0">
+      <div>&copy; <span id="year"></span> Pursuite Institute. All rights reserved.</div>
+      <div><a href="#" aria-label="Terms">Terms</a> • <a href="#" aria-label="Privacy">Privacy</a></div>
+    </div>
+  </footer>  <script>
+    // --- Dynamic Data ---
+    const COURSES = [
+      { id:1, std:"9", title:"Class 9 • Science Foundation", desc:"Strong basics across Physics, Chemistry & Biology with weekly worksheets.", mode:["Classroom","Online"], hours:4 },
+      { id:2, std:"9", title:"Class 9 • Maths Foundation", desc:"NCERT mastery & olympiad‑style thinking problems.", mode:["Classroom","Online"], hours:3 },
+      { id:3, std:"10", title:"Class 10 • Science (Full)", desc:"Concepts + exemplar + board blueprints + test series.", mode:["Classroom","Online"], hours:5 },
+      { id:4, std:"10", title:"Class 10 • Mathematics", desc:"Structured theory → PYQs → speed drills.", mode:["Classroom","Online"], hours:4 },
+      { id:5, std:"11", title:"Class 11 • Physics", desc:"Mechanics to waves with problem‑solving labs.", mode:["Classroom","Online"], hours:4 },
+      { id:6, std:"11", title:"Class 11 • Chemistry", desc:"Physical, Organic & Inorganic with numericals.", mode:["Classroom","Online"], hours:4 },
+      { id:7, std:"11", title:"Class 11 • Mathematics", desc:"Functions, algebra, calculus primer.", mode:["Classroom","Online"], hours:4 },
+      { id:8, std:"12", title:"Class 12 • Physics", desc:"Electro, current, optics, modern physics with tests.", mode:["Classroom","Online"], hours:5 },
+      { id:9, std:"12", title:"Class 12 • Chemistry", desc:"Board‑oriented with past paper analysis.", mode:["Classroom","Online"], hours:5 },
+      { id:10, std:"12", title:"Class 12 • Mathematics", desc:"Differentiation, integration, vectors & 3D with PYQs.", mode:["Classroom","Online"], hours:5 }
+    ];
+
+    const FEES = [
+      { std:"9", subjects:"Science / Maths", mode:"Classroom / Online", hours:4, fee: "₹2,499" },
+      { std:"10", subjects:"Science / Maths", mode:"Classroom / Online", hours:5, fee: "₹3,499" },
+      { std:"11", subjects:"Phy / Chem / Maths (any)", mode:"Classroom / Online", hours:4, fee: "₹4,499" },
+      { std:"12", subjects:"Phy / Chem / Maths (any)", mode:"Classroom / Online", hours:5, fee: "₹5,499" }
+    ];
+
+    const RESOURCES = {
+      9: [
+        { label:"Class 9 Science – Notes (PDF)", href:"#" },
+        { label:"Class 9 Maths – Formula Sheet", href:"#" },
+        { label:"Class 9 – Past Year Papers
